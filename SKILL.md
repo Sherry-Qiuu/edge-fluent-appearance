@@ -9,6 +9,8 @@ A distilled, reusable implementation of the visual grammar behind the Microsoft 
 
 This is an original design system, not a pixel-for-pixel copy and not an official Microsoft asset. Microsoft, Edge, and the Edge logo are trademarks of Microsoft Corporation. Do not present the result as an official Microsoft product.
 
+Canonical repository: https://github.com/Sherry-Qiuu/edge-fluent-appearance
+
 ![Edge Fluent Appearance, light theme](demo/preview-light.png)
 
 ## What is in the box
