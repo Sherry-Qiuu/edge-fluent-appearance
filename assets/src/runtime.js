@@ -10,7 +10,7 @@
     return;
   }
 
-  var VERSION = "1.0.1";
+  var VERSION = "1.1.0";
   var STORAGE_DEFAULT = "edge-fluent-appearance:v1";
   var CSS = "__EDGE_CSS_PLACEHOLDER__";
 
@@ -27,7 +27,12 @@
       Object.freeze({ id: "dune", label: "沙丘", en: "Dune" }),
       Object.freeze({ id: "tide", label: "潮汐", en: "Tide" }),
       Object.freeze({ id: "bloom", label: "花期", en: "Bloom" }),
-      Object.freeze({ id: "nocturne", label: "夜航", en: "Nocturne" })
+      Object.freeze({ id: "nocturne", label: "夜航", en: "Nocturne" }),
+      Object.freeze({ id: "alpine", label: "高山", en: "Alpine" }),
+      Object.freeze({ id: "forest", label: "雾林", en: "Forest" }),
+      Object.freeze({ id: "coast", label: "海岸", en: "Coast" }),
+      Object.freeze({ id: "meadow", label: "花野", en: "Meadow" }),
+      Object.freeze({ id: "canyon", label: "峡谷", en: "Canyon" })
     ])
   });
 
@@ -50,7 +55,7 @@
       saved: "自动保存到此浏览器",
       savedShort: "已保存",
       custom: "内置主题",
-      builtIn: "5 个颜色 · 5 个图像",
+      builtIn: "5 个颜色 · 10 个图像",
       deep: "深色",
       following: "跟随系统",
       imageClear: "不使用图像主题",
@@ -74,7 +79,7 @@
       saved: "Saved in this browser",
       savedShort: "Saved",
       custom: "Built-in",
-      builtIn: "5 colors · 5 images",
+      builtIn: "5 colors · 10 images",
       deep: "Dark",
       following: "Following system",
       imageClear: "Remove image theme",
@@ -876,3 +881,4 @@
     toggle: toggle
   });
 })();
+

@@ -1,6 +1,6 @@
 ﻿# Deployment guide
 
-Everything below assumes the five files in `assets/` are available at a stable URL. `edge-theme.js` is self-contained: it already includes the stylesheet and the five SVG art themes.
+Everything below assumes the `assets/` folder is available at a stable URL. `edge-theme.js` is self-contained: it already includes the stylesheet and the ten SVG art themes.
 
 ---
 
@@ -311,14 +311,14 @@ Use a unique `data-edge-storage-key` per app. The default key is shared across t
 
 ### Versioning
 
-Pin a version in the path (`/vendor/edge-theme/1.0.0/edge-theme.js`) and keep the old file for rollback. The bundle is deterministic: `node assets/src/build.mjs` regenerates both `edge-theme.css` and `edge-theme.js`.
+Pin a version in the path (`/vendor/edge-theme/1.1.0/edge-theme.js`) and keep the old file for rollback. The bundle is deterministic: `node assets/src/build.mjs` regenerates both `edge-theme.css` and `edge-theme.js`.
 
 ---
 
 ## 8. Production hardening
 
 - **Self-host** the bundle; do not hotlink a demo server.
-- Set a long cache lifetime and a content hash in the filename. The file is ~107 KB uncompressed, roughly 30 KB after Brotli.
+- Set a long cache lifetime and a content hash in the filename. The file is ~130 KB uncompressed, roughly 35 KB after Brotli.
 - Add `data-edge-panel="false"` if the floating button is not part of the product. The API and tokens still work.
 - Add `data-edge-persist="false"` for kiosks, embedded demos, and screenshots.
 - Keep the `<meta name="color-scheme" content="light dark">` tag so form controls and scrollbars match.
@@ -447,3 +447,6 @@ console.assert(theme.get().appearance === "system");
 The code and original SVG art in this skill are original work. The design is *inspired by* the Fluent language and the Edge Settings page; it is not endorsed by or affiliated with Microsoft. If you publish a derivative, keep the non-affiliation notice and do not use Microsoft logos or product screenshots as your own assets.
 
 The demo copy mentions “Microsoft Edge” descriptively. That is nominative use; do not rename your product “Edge” or use the Edge logo.
+
+
+

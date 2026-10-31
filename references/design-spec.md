@@ -211,7 +211,7 @@ The reference is almost static. Do not add scale-on-hover cards, glow, or gradie
 - Sections separated by 1 px borders; 15/18 px padding.
 - Three-option segmented control full width; 33 px high; 11.5 px labels.
 - Tab track 3 px; 30 px tabs.
-- Five 29 px swatches or five 56 px art tiles in a 5-column grid.
+- Five 29 px swatches, or ten art tiles in a 5-column, 2-row grid.
 - Footer: 10 px status + “已保存” badge. Reset in the section footer, not duplicated.
 - Focus: open focuses the close button; Tab is trapped; Escape closes; outside click closes without stealing focus.
 
@@ -219,10 +219,12 @@ The reference is almost static. Do not add scale-on-hover cards, glow, or gradie
 
 ## 7. Image theme treatment
 
+The shipped set covers ten landscapes: aurora, dune, tide, bloom, nocturne, alpine, forest, coast, meadow, and canyon. They stay abstract enough to work as a backdrop rather than a stock photograph, and each has a distinct temperature and horizon line so switching is legible even through the scrim.
+
 The image theme is not a full-bleed wallpaper behind text. It is a three-layer recipe:
 
 1. **Art** — a 1600×1000 abstract SVG, embedded as a data URI, `background-size: cover`, fixed.
-2. **Scrim** — a linear gradient from 74% to 90% `--edge-bg` in light mode, 60% to 82% in dark. This is what guarantees text contrast.
+2. **Scrim** — a linear gradient from 74% to 90% `--edge-bg` in light mode, 82% to 94% in dark. The darker range is deliberate: bright landscapes such as alpine and meadow must not turn a dark theme into a light one.
 3. **Glass surfaces** — cards use 82% opaque surface + 24 px blur, so the art reads as color and atmosphere, not as a busy photo.
 
 A subtle accent tint (`--edge-art-tint`, 16% accent) sits on top of the art to tie the image theme to the selected color. This is why `iris + aurora` feels deliberately paired rather than randomly combined.
@@ -265,3 +267,6 @@ At 390 px the document must have no horizontal scroll. The quick-chip strip is t
 **Do not copy:** the Microsoft/Edge logo, the exact screenshot, Microsoft product names in the UI, the “Copilot” brand, or the claim that this is an official Edge surface. The demo uses original copy and an abstract wordmark.
 
 **Do not over-generalize:** Edge Settings is a desktop-first, information-dense product surface. It is not a marketing hero, a mobile app, or a gaming UI. If the target is a landing page, keep the tokens and panel but allow a larger display type; see `demo/any-page.html` for that adaptation.
+
+
+

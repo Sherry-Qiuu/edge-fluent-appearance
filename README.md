@@ -1,9 +1,9 @@
-# Edge Fluent Appearance
+﻿# Edge Fluent Appearance
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Demo](https://img.shields.io/badge/demo-live-5b7c5a.svg)](https://sherry-qiuu.github.io/edge-fluent-appearance/demo/)
 
-> A distilled, drop-in implementation of the visual language behind the Microsoft Edge Settings page: warm neutral canvas, quiet sidebar, one large surface, compact Fluent controls, **3 appearance modes**, **5 color themes**, and **5 image themes**.
+> A distilled, drop-in implementation of the visual language behind the Microsoft Edge Settings page: warm neutral canvas, quiet sidebar, one large surface, compact Fluent controls, **3 appearance modes**, **5 color themes**, and **10 natural-landscape image themes**.
 >
 > This is an original, non-official design system. It ships no Microsoft logos or screenshots and is not affiliated with Microsoft.
 
@@ -16,7 +16,7 @@
 
 Most “Edge-style” recreations copy the screenshot and stop at a static mockup. This skill extracts the *grammar* — proportions, surface hierarchy, accent discipline, control density, and the separation between appearance and theme — and turns it into an asset you can deploy to any page with one script.
 
-- **One file** (`assets/edge-theme.js`) contains the CSS, the five SVG art themes, the appearance resolver, and the floating panel.
+- **One file** (`assets/edge-theme.js`) contains the CSS, the ten natural-landscape SVG art themes, the appearance resolver, and the floating panel.
 - **Zero dependencies**, no build step, no font download, no external images.
 - **Honest modes**: overlay-only for third-party pages, canvas for editorial pages, full kit for settings/app shells.
 - **Accessible**: 4.5:1+ text, focus rings, keyboard panel, reduced motion, color-independent selection states.
@@ -25,7 +25,7 @@ Most “Edge-style” recreations copy the screenshot and stop at a static mocku
 
 | Light — color theme | Dark — image theme + panel |
 | --- | --- |
-| ![Light appearance page](demo/preview-light.png) | ![Dark Aurora appearance page](demo/preview-dark.png) |
+| ![Light appearance page](demo/preview-light.png) | ![Dark alpine appearance page](demo/preview-dark.png) |
 
 | Floating panel — color | Floating panel — image |
 | --- | --- |
@@ -85,7 +85,7 @@ For strict CSP, link `assets/edge-theme.css` directly and set `data-edge-inject-
 
 **Color:** 湖蓝 Azure · 鼠尾草 Sage · 暖砂 Amber · 玫瑰 Rose · 鸢尾 Iris
 
-**Image:** 极光 Aurora · 沙丘 Dune · 潮汐 Tide · 花期 Bloom · 夜航 Nocturne
+**Image:** 极光 Aurora · 沙丘 Dune · 潮汐 Tide · 花期 Bloom · 夜航 Nocturne · 高山 Alpine · 雾林 Forest · 海岸 Coast · 花野 Meadow · 峡谷 Canyon
 
 Color and image themes can be layered. Image themes apply a scrim and 82% glass surfaces so the art never compromises body copy.
 
@@ -94,7 +94,7 @@ Color and image themes can be layered. Image themes apply a scrim and 82% glass 
 | Path | What it is |
 | --- | --- |
 | `SKILL.md` | The agent-facing skill: triggers, deployment depth, token mapping, API, QA checklist. |
-| `assets/edge-theme.js` | Self-contained production bundle (107 KB raw, roughly 30 KB compressed). |
+| `assets/edge-theme.js` | Self-contained production bundle (130 KB raw, roughly 35 KB compressed). |
 | `assets/edge-theme.css` | The same styles for manual/CSP-safe integration. |
 | `assets/src/` | Tokens, components, panel, responsive layers, runtime source, and `build.mjs`. |
 | `demo/index.html` | Full Edge-style settings page with live preview and deploy snippet. |
@@ -128,7 +128,7 @@ Edit the CSS layers or runtime source, then:
 node assets/src/build.mjs
 ```
 
-The build inlines all five SVG themes into the CSS, embeds the CSS into the JS bundle, and fails if a theme reference is missing.
+The build inlines all ten SVG themes into the CSS, embeds the CSS into the JS bundle, and fails if a theme reference is missing.
 
 ## Design notes
 
@@ -156,3 +156,6 @@ MIT © 2026 Shihan QIU. See [LICENSE](LICENSE).
 ## Non-affiliation
 
 Microsoft, Microsoft Edge, and the Edge logo are trademarks of Microsoft Corporation. This project is an independent design study. The interface copy in the demo is original; the wordmark is an abstract mark, not the Edge logo.
+
+
+

@@ -1,6 +1,6 @@
----
+﻿---
 name: edge-fluent-appearance
-description: Recreate Microsoft Edge Settings' Fluent visual language on any web page. Use when a task needs an Edge-style settings surface, a light/dark/system appearance switcher, five color themes, five image themes, or a one-script theme panel that can be dropped into an existing site. Also triggers on Edge 外观 / 深色浅色 / 颜色主题 / 图像主题 requests.
+description: Recreate Microsoft Edge Settings' Fluent visual language on any web page. Use when a task needs an Edge-style settings surface, a light/dark/system appearance switcher, five color themes, ten landscape image themes, or a one-script theme panel that can be dropped into an existing site. Also triggers on Edge 外观 / 深色浅色 / 颜色主题 / 图像主题 requests.
 ---
 
 # Edge Fluent Appearance
@@ -17,7 +17,7 @@ Canonical repository: https://github.com/Sherry-Qiuu/edge-fluent-appearance
 
 | Path | Purpose |
 | --- | --- |
-| `assets/edge-theme.js` | **One-script deployment.** Injects all CSS, resolves appearance, mounts the floating panel, exposes `window.EdgeTheme`. Self-contained (five SVG art themes embedded). |
+| `assets/edge-theme.js` | **One-script deployment.** Injects all CSS, resolves appearance, mounts the floating panel, exposes `window.EdgeTheme`. Self-contained (ten natural-landscape SVG art themes embedded). |
 | `assets/edge-theme.css` | The same design system as plain CSS for manual integration or strict CSP. |
 | `assets/src/` | Maintainable source layers and the build script. Edit the source, then run `node assets/src/build.mjs`. |
 | `demo/index.html` | Full Edge-style appearance page and live preview. |
@@ -37,7 +37,7 @@ That single line gives the page:
 
 - system / light / dark appearance, resolved live through `prefers-color-scheme`;
 - five color themes: 湖蓝 Azure, 鼠尾草 Sage, 暖砂 Amber, 玫瑰 Rose, 鸢尾 Iris;
-- five image themes: 极光 Aurora, 沙丘 Dune, 潮汐 Tide, 花期 Bloom, 夜航 Nocturne;
+- ten image themes: 极光 Aurora, 沙丘 Dune, 潮汐 Tide, 花期 Bloom, 夜航 Nocturne, 高山 Alpine, 雾林 Forest, 海岸 Coast, 花野 Meadow, 峡谷 Canyon;
 - a floating Edge-style appearance panel, persisted in `localStorage`;
 - CSS custom properties for every surface, text, border, accent, and art layer.
 
@@ -106,7 +106,7 @@ Follow this order, and do not skip the contrast check.
 3. **Place the asset.** Copy `assets/edge-theme.js` into the site (or serve the folder). Add the script in `<head>` with the author defaults. Do not use `defer` for the theme script: the color scheme must be set before first paint.
 4. **Set no-JS attributes.** Add `data-edge-appearance`, `data-edge-color-theme`, and `data-edge-image-theme` to `<html>` as well, so the correct palette paints even if the script is blocked.
 5. **Map surfaces.** Replace hard-coded page/card/text/border colors with the token table below. Keep spacing and layout; the Edge character comes from proportion and restraint, not from rewriting layout.
-6. **Verify.** Check light, dark, and system in both a light and a dark OS setting; all five colors; all five image themes; keyboard focus; 390 px mobile; contrast; no flash on reload; persisted choice.
+6. **Verify.** Check light, dark, and system in both a light and a dark OS setting; all five colors; all ten image themes; keyboard focus; 390 px mobile; contrast; no flash on reload; persisted choice.
 7. **Remove the scaffolding.** Delete the floating panel for production if it is not a user-facing feature (`data-edge-panel="false"`), or keep it if the site is a design demo.
 
 ## Token map for mapping an existing page
@@ -161,6 +161,11 @@ Full measurements and component anatomy: `references/design-spec.md`.
 | `tide` | 潮汐 Tide | Deep blue waves with cyan foam. |
 | `bloom` | 花期 Bloom | Soft rose/lilac petals in blurred light. |
 | `nocturne` | 夜航 Nocturne | Indigo ridges, stars, and a cold moon. |
+| `alpine` | 高山 Alpine | Snowy peaks reflected in a still alpine lake. |
+| `forest` | 雾林 Forest | Misty pine layers with soft morning light. |
+| `coast` | 海岸 Coast | Turquoise surf, sea cliffs, and a warm horizon. |
+| `meadow` | 花野 Meadow | Sunlit wildflower meadow and rolling green hills. |
+| `canyon` | 峡谷 Canyon | Red rock mesas and a winding river. |
 
 ## JavaScript API
 
@@ -168,7 +173,7 @@ Full measurements and component anatomy: `references/design-spec.md`.
 const theme = window.EdgeTheme;
 
 theme.get();
-// { appearance: "system", mode: "dark", colorTheme: "sage", imageTheme: "none", version: "1.0.0" }
+// { appearance: "system", mode: "dark", colorTheme: "sage", imageTheme: "none", version: "1.1.0" }
 
 theme.setAppearance("dark");       // "system" | "light" | "dark"
 theme.setColorTheme("iris");       // the five IDs above
@@ -195,7 +200,7 @@ The runtime writes `data-edge-appearance`, `data-edge-mode`, `data-edge-color-th
 
 - [ ] Light and dark both pass 4.5:1 for body text, 3:1 for large text and control boundaries.
 - [ ] System mode follows a live OS change without a reload.
-- [ ] All five colors and all five image themes render; no missing art.
+- [ ] All five colors and all ten image themes render; no missing art.
 - [ ] Reload keeps the choice; reset returns to the author default.
 - [ ] Panel opens by keyboard, traps Tab, closes on Escape, and returns focus.
 - [ ] 390 px viewport has no horizontal page scroll; the quick-chip strip may scroll on its own.
@@ -229,3 +234,5 @@ The runtime writes `data-edge-appearance`, `data-edge-mode`, `data-edge-color-th
 
 - `references/design-spec.md` — the extracted measurements, tokens, states, and component anatomy.
 - `references/deployment.md` — static/React/Vue/CSP/iframe recipes and production hardening.
+
+

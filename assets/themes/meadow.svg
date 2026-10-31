@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Sunlit wildflower meadow with soft green hills">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bcd9e7"/>
+      <stop offset=".55" stop-color="#e9efdf"/>
+      <stop offset="1" stop-color="#f4e8c9"/>
+    </linearGradient>
+    <linearGradient id="hillBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8faf74"/>
+      <stop offset="1" stop-color="#6b8d56"/>
+    </linearGradient>
+    <linearGradient id="hillMid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6f995b"/>
+      <stop offset="1" stop-color="#4e7544"/>
+    </linearGradient>
+    <linearGradient id="hillFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7a9c49"/>
+      <stop offset=".55" stop-color="#4f6f31"/>
+      <stop offset="1" stop-color="#2e471f"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#fff7d2" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#fff7d2" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".88" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".04"/></feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <circle cx="1240" cy="190" r="220" fill="url(#sun)" filter="url(#soft)"/>
+  <path d="M0 590C250 500 430 560 650 520s380-70 590-20 260 50 360 30v470H0Z" fill="url(#hillBack)"/>
+  <path d="M0 690C230 580 430 640 640 610s390-40 580 20 280 40 380 10v360H0Z" fill="url(#hillMid)"/>
+  <path d="M0 820C210 700 410 760 620 730s390-10 560 60 280 70 420 30v180H0Z" fill="url(#hillFront)"/>
+  <g fill="none" stroke="#cfe0a8" stroke-linecap="round" opacity=".45">
+    <path d="M0 735c220-90 410-40 620-60s390-10 560 50" stroke-width="2"/>
+    <path d="M0 870c200-70 400-20 590-40s390 0 570 60" stroke-width="1.4"/>
+  </g>
+  <g>
+    <circle cx="250" cy="790" r="4" fill="#f2d777"/><circle cx="310" cy="820" r="3" fill="#f5efe2"/>
+    <circle cx="420" cy="760" r="3.4" fill="#e9a6a0"/><circle cx="520" cy="830" r="4.2" fill="#f2d777"/>
+    <circle cx="640" cy="780" r="3" fill="#f5efe2"/><circle cx="720" cy="850" r="3.6" fill="#d98fa1"/>
+    <circle cx="840" cy="800" r="3" fill="#f2d777"/><circle cx="940" cy="860" r="4" fill="#f5efe2"/>
+    <circle cx="1060" cy="810" r="3.2" fill="#e9a6a0"/><circle cx="1180" cy="870" r="3.8" fill="#f2d777"/>
+    <circle cx="1300" cy="820" r="3" fill="#f5efe2"/><circle cx="1430" cy="880" r="4" fill="#d98fa1"/>
+  </g>
+  <g fill="#2f4a22" opacity=".55">
+    <path d="M160 920c10-26 18-40 30-54 2 20 0 38-6 54Z"/>
+    <path d="M220 940c8-22 14-34 26-46 0 18-2 32-8 46Z"/>
+    <path d="M1000 930c10-24 18-38 30-50 0 18-2 34-8 50Z"/>
+    <path d="M1360 950c8-22 16-36 28-48 0 18-4 34-10 48Z"/>
+  </g>
+  <g fill="#fffdf4" opacity=".55">
+    <circle cx="380" cy="220" r="1.4"/><circle cx="720" cy="160" r="1.1"/>
+    <circle cx="980" cy="240" r="1.6"/><circle cx="1420" cy="210" r="1.2"/>
+  </g>
+  <rect width="1600" height="1000" filter="url(#grain)" opacity=".6"/>
+</svg>

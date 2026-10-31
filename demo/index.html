@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<meta name="description" content="Edge Fluent Appearance — a drop-in, Edge-inspired appearance system with light, dark, system modes, five color themes and five image themes.">
+<meta name="description" content="Edge Fluent Appearance — a drop-in, Edge-inspired appearance system with light, dark, system modes, five color themes and ten landscape image themes.">
 <title>外观 · Edge Fluent Appearance</title>
 <script src="../assets/edge-theme.js" data-edge-panel="true" data-edge-query="true" data-edge-color-theme="sage"></script>
 <style>
@@ -451,11 +451,31 @@
                 <span class="edge-art-thumb" data-art="nocturne"></span>
                 <span class="edge-art-meta"><span class="edge-art-name">夜航</span><span class="edge-art-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
               </button>
+              <button class="edge-art-card" type="button" role="radio" data-image="alpine" aria-checked="false" title="高山 · Alpine">
+                <span class="edge-art-thumb" data-art="alpine"></span>
+                <span class="edge-art-meta"><span class="edge-art-name">高山</span><span class="edge-art-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+              </button>
+              <button class="edge-art-card" type="button" role="radio" data-image="forest" aria-checked="false" title="雾林 · Forest">
+                <span class="edge-art-thumb" data-art="forest"></span>
+                <span class="edge-art-meta"><span class="edge-art-name">雾林</span><span class="edge-art-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+              </button>
+              <button class="edge-art-card" type="button" role="radio" data-image="coast" aria-checked="false" title="海岸 · Coast">
+                <span class="edge-art-thumb" data-art="coast"></span>
+                <span class="edge-art-meta"><span class="edge-art-name">海岸</span><span class="edge-art-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+              </button>
+              <button class="edge-art-card" type="button" role="radio" data-image="meadow" aria-checked="false" title="花野 · Meadow">
+                <span class="edge-art-thumb" data-art="meadow"></span>
+                <span class="edge-art-meta"><span class="edge-art-name">花野</span><span class="edge-art-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+              </button>
+              <button class="edge-art-card" type="button" role="radio" data-image="canyon" aria-checked="false" title="峡谷 · Canyon">
+                <span class="edge-art-thumb" data-art="canyon"></span>
+                <span class="edge-art-meta"><span class="edge-art-name">峡谷</span><span class="edge-art-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+              </button>
             </div>
             <div class="demo-art-foot">
               <p>
                 <svg aria-hidden="true"><use href="#i-info"/></svg>
-                图像主题使用抽象场景，以毛玻璃表面保证正文对比度。
+                图像主题使用自然景观场景，以毛玻璃表面保证正文对比度。
               </p>
               <button class="edge-link" id="clear-image" type="button" hidden>移除图像主题</button>
             </div>
@@ -517,7 +537,7 @@
               <span class="edge-badge">1 行代码</span>
             </summary>
             <div class="edge-dev-body">
-              <p>将 <code>edge-theme.js</code> 放到站点，即可获得同样的系统 / 浅色 / 深色切换、5 个颜色主题、5 个图像主题和悬浮设置面板。</p>
+              <p>将 <code>edge-theme.js</code> 放到站点，即可获得同样的系统 / 浅色 / 深色切换、5 个颜色主题、10 个图像主题和悬浮设置面板。</p>
               <div class="edge-code">
                 <code id="deploy-code">&lt;script src="/edge-theme.js" data-edge-panel="true"&gt;&lt;/script&gt;</code>
                 <button class="edge-icon-btn demo-code-copy" type="button" id="copy-code" aria-label="复制部署代码">
@@ -531,7 +551,7 @@
           <div class="demo-footer">
             <span>设计语言参考 Microsoft Edge 设置页 · <strong>非官方复刻</strong></span>
             <span class="demo-footer-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span>5 个颜色主题 · 5 个图像主题 · 系统 / 浅色 / 深色</span>
+            <span>5 个颜色主题 · 10 个图像主题 · 系统 / 浅色 / 深色</span>
           </div>
         </div>
       </section>
@@ -553,7 +573,7 @@
     iris: "略带灰度的鸢尾紫，安静但有辨识度。"
   };
   var colorNames = { azure: "湖蓝", sage: "鼠尾草", amber: "暖砂", rose: "玫瑰", iris: "鸢尾" };
-  var imageNames = { aurora: "极光", dune: "沙丘", tide: "潮汐", bloom: "花期", nocturne: "夜航" };
+  var imageNames = { aurora: "极光", dune: "沙丘", tide: "潮汐", bloom: "花期", nocturne: "夜航", alpine: "高山", forest: "雾林", coast: "海岸", meadow: "花野", canyon: "峡谷" };
   var modeNames = { system: "跟随系统", light: "浅色", dark: "深色" };
 
   function $(selector, scope) {

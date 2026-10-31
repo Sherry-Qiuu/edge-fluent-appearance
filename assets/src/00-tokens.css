@@ -129,6 +129,11 @@
   --edge-art-tide: url("themes/tide.svg");
   --edge-art-bloom: url("themes/bloom.svg");
   --edge-art-nocturne: url("themes/nocturne.svg");
+  --edge-art-alpine: url("themes/alpine.svg");
+  --edge-art-forest: url("themes/forest.svg");
+  --edge-art-coast: url("themes/coast.svg");
+  --edge-art-meadow: url("themes/meadow.svg");
+  --edge-art-canyon: url("themes/canyon.svg");
   --edge-art: none;
   --edge-art-scrim: none;
   --edge-art-tint: none;
@@ -240,13 +245,28 @@
 :root[data-edge-image-theme="nocturne"] {
   --edge-art: var(--edge-art-nocturne);
 }
+:root[data-edge-image-theme="alpine"] {
+  --edge-art: var(--edge-art-alpine);
+}
+:root[data-edge-image-theme="forest"] {
+  --edge-art: var(--edge-art-forest);
+}
+:root[data-edge-image-theme="coast"] {
+  --edge-art: var(--edge-art-coast);
+}
+:root[data-edge-image-theme="meadow"] {
+  --edge-art: var(--edge-art-meadow);
+}
+:root[data-edge-image-theme="canyon"] {
+  --edge-art: var(--edge-art-canyon);
+}
 
 /* When art is active, lift surfaces into glass so the backdrop can read. */
 :root[data-edge-image-theme]:not([data-edge-image-theme="none"]) {
   --edge-art-scrim: linear-gradient(
     180deg,
-    light-dark(rgba(243, 243, 241, 0.74), rgba(27, 27, 26, 0.6)) 0%,
-    light-dark(rgba(243, 243, 241, 0.9), rgba(27, 27, 26, 0.82)) 100%
+    light-dark(rgba(243, 243, 241, 0.74), rgba(27, 27, 26, 0.82)) 0%,
+    light-dark(rgba(243, 243, 241, 0.9), rgba(27, 27, 26, 0.94)) 100%
   );
   --edge-art-tint: linear-gradient(
     145deg,

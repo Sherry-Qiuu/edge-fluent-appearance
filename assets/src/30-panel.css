@@ -346,6 +346,21 @@
 .edge-panel-art[data-art="nocturne"] {
   background-image: var(--edge-art-nocturne);
 }
+.edge-panel-art[data-art="alpine"] {
+  background-image: var(--edge-art-alpine);
+}
+.edge-panel-art[data-art="forest"] {
+  background-image: var(--edge-art-forest);
+}
+.edge-panel-art[data-art="coast"] {
+  background-image: var(--edge-art-coast);
+}
+.edge-panel-art[data-art="meadow"] {
+  background-image: var(--edge-art-meadow);
+}
+.edge-panel-art[data-art="canyon"] {
+  background-image: var(--edge-art-canyon);
+}
 
 .edge-panel-theme[aria-checked="true"] .edge-panel-art {
   border-color: var(--edge-accent);

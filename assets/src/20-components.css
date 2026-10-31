@@ -869,6 +869,21 @@
 .edge-art-thumb[data-art="nocturne"] {
   background-image: var(--edge-art-nocturne);
 }
+.edge-art-thumb[data-art="alpine"] {
+  background-image: var(--edge-art-alpine);
+}
+.edge-art-thumb[data-art="forest"] {
+  background-image: var(--edge-art-forest);
+}
+.edge-art-thumb[data-art="coast"] {
+  background-image: var(--edge-art-coast);
+}
+.edge-art-thumb[data-art="meadow"] {
+  background-image: var(--edge-art-meadow);
+}
+.edge-art-thumb[data-art="canyon"] {
+  background-image: var(--edge-art-canyon);
+}
 
 .edge-art-meta {
   display: flex;
