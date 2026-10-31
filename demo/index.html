@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-edge-appearance="system" data-edge-color-theme="sage" data-edge-image-theme="none">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Edge Fluent Appearance — a drop-in, Edge-inspired appearance system with light, dark, system modes, five color themes and five image themes.">
+<title>外观 · Edge Fluent Appearance</title>
+<script src="../assets/edge-theme.js" data-edge-panel="true" data-edge-query="true" data-edge-color-theme="sage"></script>
+<style>
+  html, body { margin: 0; padding: 0; }
+  body { min-height: 100vh; }
+  [hidden] { display: none !important; }
+
+  .edge-app { display: flex; }
+
+  .demo-quick-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 2px;
+    color: var(--edge-faint);
+    font-size: 10.5px;
+    white-space: nowrap;
+  }
+
+  .demo-quick-note::before {
+    width: 5px;
+    height: 5px;
+    content: "";
+    background: var(--edge-accent);
+    border-radius: 50%;
+  }
+
+  .demo-feedback-thanks {
+    color: var(--edge-faint);
+    font-size: 11px;
+  }
+
+  .demo-swatch-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    align-items: baseline;
+    min-height: 18px;
+    margin-top: 17px;
+    color: var(--edge-muted);
+    font-size: 11.5px;
+  }
+
+  .demo-swatch-meta strong {
+    color: var(--edge-text);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .demo-swatch-meta span {
+    color: var(--edge-faint);
+  }
+
+  .demo-art-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    color: var(--edge-faint);
+    font-size: 11px;
+  }
+
+  .demo-art-foot p {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    color: var(--edge-faint);
+    font-size: 11px;
+  }
+
+  .demo-art-foot svg {
+    width: 13px;
+    height: 13px;
+    color: var(--edge-accent-text);
+  }
+
+  .demo-mini-art {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .demo-mini-art::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: linear-gradient(135deg, var(--edge-art-tint), transparent 70%);
+  }
+
+  .demo-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 4px 0;
+    color: var(--edge-faint);
+    font-size: 10.5px;
+  }
+
+  .demo-footer strong {
+    color: var(--edge-muted);
+    font-weight: 500;
+  }
+
+  .demo-footer-dots {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .demo-footer-dots i {
+    width: 5px;
+    height: 5px;
+    background: var(--edge-accent);
+    border-radius: 50%;
+    opacity: 0.35;
+  }
+
+  .demo-footer-dots i:nth-child(2) { opacity: 0.65; }
+  .demo-footer-dots i:nth-child(3) { opacity: 1; }
+
+  .demo-code-copy {
+    flex: none;
+    color: var(--edge-muted);
+  }
+
+  .demo-code-copy:hover { color: var(--edge-text); }
+
+  .demo-thanks { color: var(--edge-muted); font-size: 10.5px; }
+
+  .demo-page-card {
+    animation: demo-rise 420ms var(--edge-ease-out) both;
+  }
+
+  @keyframes demo-rise {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 920px) {
+    .demo-quick-note { display: none; }
+    .edge-page { margin-top: 2px; }
+  }
+
+  @media (max-width: 720px) {
+    .demo-swatch-meta { margin-top: 13px; }
+    .demo-art-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .demo-footer { padding-top: 14px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .demo-page-card { animation: none; }
+  }
+</style>
+</head>
+<body>
+<svg class="edge-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5.2 20c.7-3.4 3.3-5.2 6.8-5.2s6.1 1.8 6.8 5.2"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.2" cy="8.2" r="3.4"/><path d="m10.8 10.8 7.2 7.2M15 15l2-2M17 17l2-2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2 19 6v5.3c0 4.1-2.7 7.4-7 9.5-4.3-2.1-7-5.4-7-9.5V6Z"/><path d="m9 11.8 2 2 4-4.2"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.9 9l5.6 1.9-5.6 1.9L12 18.5l-1.9-5.7L4.5 11 10.1 9Z"/><path d="m18.8 16.5.6 2 2 .6-2 .6-.6 2-.6-2-2-.6 2-.6Z"/></symbol>
+  <symbol id="i-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2a8.8 8.8 0 1 0 0 17.6c1.5 0 2.2-1 2.2-2.1 0-1.5-1.2-2-1.2-3.1 0-1 .8-1.7 2-1.7h1.8a4 4 0 0 0 4-4c0-3.7-3.9-6.7-8.8-6.7Z"/><circle cx="7.6" cy="10.1" r="1"/><circle cx="10.2" cy="6.8" r="1"/><circle cx="15" cy="7.2" r="1"/><circle cx="17.9" cy="10.4" r="1"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.8 12h16.4M12 3.5c2.2 2.3 3.3 5.1 3.3 8.5s-1.1 6.2-3.3 8.5c-2.2-2.3-3.3-5.1-3.3-8.5s1.1-6.2 3.3-8.5Z"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M9.5 20v-5.5h5V20"/></symbol>
+  <symbol id="i-language" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 6.5h8M8.5 4v2.5c0 4-2 7-4.5 9"/><path d="M6 10c1.4 2.1 3.2 3.5 5.6 4.3M13.5 20l3.3-8.3L20 20M14.6 17.4h4.5"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10M8 10.5l4 4 4-4M5 19h14"/></symbol>
+  <symbol id="i-access" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.6" r="1.7"/><path d="M5.5 8.5h13M12 8.5V15M12 15l-3 5M12 15l3 5"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="4.3" width="17.6" height="12.2" rx="1.8"/><path d="M9 20h6M12 16.5V20"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5v5h5"/><path d="M4.6 10a8 8 0 1 1 1 7.4"/></symbol>
+  <symbol id="i-puzzle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.5h6v3a2 2 0 1 0 4 0v3.5h-3a2 2 0 1 0 0 4h3V19H9v-3a2 2 0 1 0-4 0V9.5h3a2 2 0 1 0 0-4Z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M12 10.5v5.2M12 7.6v.2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m15.5 15.5 4.2 4.2"/></symbol>
+  <symbol id="i-thumb-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 10.3 11 3.8c.3-.6.9-.9 1.5-.7.9.3 1.4 1.2 1.2 2.1l-.7 3.1h4.7c1.3 0 2.2 1.2 1.9 2.4l-1.5 6.1a2 2 0 0 1-2 1.6H7.5Z"/><path d="M7.5 10.3H4v8.1h3.5Z"/></symbol>
+  <symbol id="i-thumb-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 13.7 13 20.2c-.3.6-.9.9-1.5.7-.9-.3-1.4-1.2-1.2-2.1l.7-3.1H6.3c-1.3 0-2.2-1.2-1.9-2.4l1.5-6.1a2 2 0 0 1 2-1.6h8.6Z"/><path d="M16.5 5.6H20v8.1h-3.5Z"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-8 8"/><path d="M18 14v5H5V6h5"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m15.5 15.5 4.2 4.2M8 10.8h5.6M10.8 8v5.6"/></symbol>
+  <symbol id="i-tab" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="5" width="17.6" height="14" rx="2"/><path d="M3.5 9h17M7.5 7h3"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.8 2.5 5.1 5.6.8-4.1 4 1 5.6-5-2.7-5 2.7 1-5.6-4.1-4 5.6-.8Z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="8.5" width="11" height="11" rx="1.6"/><path d="M15.5 8.5v-3a1 1 0 0 0-1-1h-10a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8.5 8.5-4 3.5 4 3.5M15.5 8.5l4 3.5-4 3.5M13.5 5l-3 14"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.2 4.2L19 6.8"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.1M12 19.3v2.1M2.6 12h2.1M19.3 12h2.1M5.4 5.4l1.5 1.5M17.1 17.1l1.5 1.5M18.6 5.4l-1.5 1.5M6.9 17.1l-1.5 1.5"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.1 14.3A8.4 8.4 0 0 1 9.7 3.9 8.5 8.5 0 1 0 20.1 14.3Z"/></symbol>
+  <symbol id="i-contrast" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8a8.2 8.2 0 0 0 0 16.4Z" fill="currentColor" stroke="none"/></symbol>
+</svg>
+
+<div class="edge-app">
+  <aside class="edge-sidebar">
+    <div class="edge-sidebar-head">
+      <a class="edge-wordmark" href="#" aria-label="设置首页">
+        <span class="edge-wordmark-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 15.5c2.7-1.6 3.2-5.5 5.4-7.6 2.6-2.5 6.4-1.6 8.5.6-1 5.1-5.2 9.1-10.7 9.5-1.1.1-2.2.3-3.2-.1-.4-1.1-.5-1.7 0-2.4Z"/><path d="M14.8 6.8c1.4 1 2.4 2.2 2.9 3.8"/></svg>
+        </span>
+        <span class="edge-wordmark-text">
+          <span class="edge-wordmark-title">设置</span>
+          <span class="edge-wordmark-sub">Edge Fluent</span>
+        </span>
+      </a>
+    </div>
+
+    <nav class="edge-nav" aria-label="设置分类">
+      <button class="edge-nav-item" type="button" data-demo-nav>
+        <svg class="edge-nav-icon" aria-hidden="true"><use href="#i-user"/></svg>
+        个人资料
+      </button>
+      <button class="edge-nav-item" type="button" data-demo-nav>
+        <svg class="edge-nav-icon" aria-hidden="true"><use href="#i-key"/></svg>
+        密码和自动填充
+      </button>
+      <button class="edge-nav-item" type="button" data-demo-nav>
+        <svg class="edge-nav-icon" aria-hidden="true"><use href="#i-shield"/></svg>
+        隐私、搜索和服务
+      </button>
+      <button class="edge-nav-item" type="button" data-demo-nav>
+        <svg class="edge-nav-icon" aria-hidden="true"><use href="#i-spark"/></svg>
+        Copilot 和 AI
+      </button>
+      <button class="edge-nav-item is-active" type="button" aria-current="page">
+        <svg class="edge-nav-icon" aria-hidden="true"><use href="#i-palette"/></svg>
+        外观
+      </button>
+      <button class="edge-nav-item" type="button" data-demo-nav>
+        <svg class="edge-nav-icon" aria-hidden="true"><use href="#i-globe"/></svg>
+        默认浏览器
+      </button>
+      <button class="edge-nav-item" type="button" data-demo-nav>
+        <svg class="edge-nav-icon" aria-hidden="true"><use href="#i-home"/></svg>
+        启动、主页和新建选项卡页
+      </button>
+    </nav>
+
+    <nav class="edge-nav" aria-label="更多设置">
+      <button class="edge-nav-item" type="button" data-demo-nav>
+        <svg class="edge-nav-icon" aria-hidden="true"><use href="#i-language"/></svg>
+        语言
+      </button>
+      <button class="edge-nav-item" type="button" data-demo-nav>
+        <svg class="edge-nav-icon" aria-hidden="true"><use href="#i-download"/></svg>
+        下载
+      </button>
+      <button class="edge-nav-item" type="button" data-demo-nav>
+        <svg class="edge-nav-icon" aria-hidden="true"><use href="#i-access"/></svg>
+        辅助功能
+      </button>
+      <button class="edge-nav-item" type="button" data-demo-nav>
+        <svg class="edge-nav-icon" aria-hidden="true"><use href="#i-monitor"/></svg>
+        系统和性能
+      </button>
+      <button class="edge-nav-item" type="button" data-demo-nav>
+        <svg class="edge-nav-icon" aria-hidden="true"><use href="#i-refresh"/></svg>
+        重置设置
+      </button>
+    </nav>
+
+    <nav class="edge-nav" aria-label="浏览器的更多信息">
+      <button class="edge-nav-item" type="button" data-demo-nav>
+        <svg class="edge-nav-icon" aria-hidden="true"><use href="#i-puzzle"/></svg>
+        扩展
+        <svg class="edge-nav-external" aria-hidden="true"><use href="#i-external"/></svg>
+      </button>
+      <button class="edge-nav-item" type="button" data-demo-nav>
+        <svg class="edge-nav-icon" aria-hidden="true"><use href="#i-info"/></svg>
+        关于 Microsoft Edge
+      </button>
+    </nav>
+
+    <div class="edge-sidebar-foot">
+      <p class="edge-sidebar-note">一个非官方的 Edge 设置页设计复刻，用于展示可复用的 Fluent 外观系统。</p>
+      <button class="edge-btn edge-btn-block" type="button" data-demo-feedback>发送反馈</button>
+    </div>
+  </aside>
+
+  <main class="edge-main">
+    <div class="edge-main-inner">
+      <div class="edge-topbar">
+        <div class="edge-mobile-brand">
+          <span class="edge-wordmark-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 15.5c2.7-1.6 3.2-5.5 5.4-7.6 2.6-2.5 6.4-1.6 8.5.6-1 5.1-5.2 9.1-10.7 9.5-1.1.1-2.2.3-3.2-.1-.4-1.1-.5-1.7 0-2.4Z"/></svg>
+          </span>
+          设置
+        </div>
+        <label class="edge-search">
+          <svg aria-hidden="true"><use href="#i-search"/></svg>
+          <input id="settings-search" type="search" placeholder="搜索设置" autocomplete="off" aria-label="搜索设置">
+          <kbd>Ctrl K</kbd>
+        </label>
+        <div class="edge-topbar-actions">
+          <span class="demo-quick-note">非官方设计复刻</span>
+          <button class="edge-btn" id="open-panel" type="button">
+            <svg aria-hidden="true"><use href="#i-contrast"/></svg>
+            <span>悬浮面板</span>
+          </button>
+        </div>
+      </div>
+
+      <section class="edge-page demo-page-card" aria-labelledby="page-title">
+        <header class="edge-page-head">
+          <div class="edge-page-title">
+            <h1 id="page-title">外观</h1>
+            <p class="edge-page-sub">自定义浏览器外观。更改会立即应用，并保存在此浏览器中。</p>
+          </div>
+          <div class="edge-page-actions">
+            <div class="edge-feedback">
+              你对这些外观选项满意吗？
+              <button class="edge-icon-btn" type="button" data-demo-thumb="up" aria-label="满意">
+                <svg aria-hidden="true"><use href="#i-thumb-up"/></svg>
+              </button>
+              <button class="edge-icon-btn" type="button" data-demo-thumb="down" aria-label="不满意">
+                <svg aria-hidden="true"><use href="#i-thumb-down"/></svg>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <div class="edge-page-body">
+          <div class="edge-quick" aria-label="相关外观设置">
+            <button class="edge-chip" type="button" data-demo-quick>
+              <svg aria-hidden="true"><use href="#i-zoom"/></svg>
+              页面缩放
+            </button>
+            <button class="edge-chip" type="button" data-demo-quick>
+              <svg aria-hidden="true"><use href="#i-home"/></svg>
+              “开始”按钮
+            </button>
+            <button class="edge-chip" type="button" data-demo-quick>
+              <svg aria-hidden="true"><use href="#i-tab"/></svg>
+              标签页
+            </button>
+            <button class="edge-chip" type="button" data-demo-quick>
+              <svg aria-hidden="true"><use href="#i-star"/></svg>
+              书签
+            </button>
+          </div>
+
+          <div class="edge-card">
+            <div class="edge-row">
+              <div class="edge-row-copy">
+                <span class="edge-row-icon" aria-hidden="true">
+                  <svg><use href="#i-contrast"/></svg>
+                </span>
+                <div>
+                  <div class="edge-row-title">整体外观</div>
+                  <div class="edge-row-desc">适用于新的选项卡、页面、对话框和其他菜单。</div>
+                </div>
+              </div>
+              <div class="edge-row-control">
+                <div class="edge-segmented" id="appearance-control" role="radiogroup" aria-label="整体外观">
+                  <button class="edge-seg" type="button" role="radio" data-appearance="system" aria-checked="true">
+                    <svg aria-hidden="true"><use href="#i-monitor"/></svg><span>系统</span>
+                  </button>
+                  <button class="edge-seg" type="button" role="radio" data-appearance="light" aria-checked="false">
+                    <svg aria-hidden="true"><use href="#i-sun"/></svg><span>浅色</span>
+                  </button>
+                  <button class="edge-seg" type="button" role="radio" data-appearance="dark" aria-checked="false">
+                    <svg aria-hidden="true"><use href="#i-moon"/></svg><span>深色</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="edge-section-head">
+            <h2 class="edge-section-heading">主题</h2>
+            <span class="edge-section-note">颜色与图像可以叠加</span>
+          </div>
+
+          <div class="edge-notice">
+            <span class="edge-notice-icon" aria-hidden="true">
+              <svg><use href="#i-spark"/></svg>
+            </span>
+            <div class="edge-notice-copy">
+              <div class="edge-notice-title">主题已刷新！</div>
+              <div class="edge-notice-desc">新颜色现已覆盖更多界面区域。经典主题已移至 <a class="edge-link" href="#" data-demo-store>主题商店</a>，也可以随时恢复默认值。</div>
+            </div>
+          </div>
+
+          <div class="edge-toolbar">
+            <div class="edge-tabs" role="tablist" aria-label="主题类型">
+              <button class="edge-tab" type="button" role="tab" id="tab-color" aria-selected="true" aria-controls="panel-color" data-tab="color">
+                <svg aria-hidden="true"><use href="#i-palette"/></svg>
+                颜色主题
+              </button>
+              <button class="edge-tab" type="button" role="tab" id="tab-image" aria-selected="false" aria-controls="panel-image" data-tab="image">
+                <svg aria-hidden="true"><use href="#i-tab"/></svg>
+                图像主题
+              </button>
+            </div>
+            <button class="edge-link" id="reset-theme" type="button">
+              <svg width="13" height="13" aria-hidden="true"><use href="#i-refresh"/></svg>
+              恢复默认值
+            </button>
+          </div>
+
+          <div id="panel-color" role="tabpanel" aria-labelledby="tab-color">
+            <div class="edge-swatches" id="color-swatches" role="radiogroup" aria-label="颜色主题">
+              <button class="edge-swatch-option" type="button" role="radio" data-color="azure" aria-checked="false" title="湖蓝 · Azure">
+                <span class="edge-swatch" data-theme="azure"><span class="edge-swatch-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+                <span class="edge-swatch-name">湖蓝</span>
+              </button>
+              <button class="edge-swatch-option" type="button" role="radio" data-color="sage" aria-checked="true" title="鼠尾草 · Sage">
+                <span class="edge-swatch" data-theme="sage"><span class="edge-swatch-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+                <span class="edge-swatch-name">鼠尾草</span>
+              </button>
+              <button class="edge-swatch-option" type="button" role="radio" data-color="amber" aria-checked="false" title="暖砂 · Amber">
+                <span class="edge-swatch" data-theme="amber"><span class="edge-swatch-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+                <span class="edge-swatch-name">暖砂</span>
+              </button>
+              <button class="edge-swatch-option" type="button" role="radio" data-color="rose" aria-checked="false" title="玫瑰 · Rose">
+                <span class="edge-swatch" data-theme="rose"><span class="edge-swatch-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+                <span class="edge-swatch-name">玫瑰</span>
+              </button>
+              <button class="edge-swatch-option" type="button" role="radio" data-color="iris" aria-checked="false" title="鸢尾 · Iris">
+                <span class="edge-swatch" data-theme="iris"><span class="edge-swatch-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+                <span class="edge-swatch-name">鸢尾</span>
+              </button>
+            </div>
+            <div class="demo-swatch-meta">
+              <strong id="color-name">鼠尾草</strong>
+              <span id="color-desc">低饱和的绿色，接近 Edge 默认的柔和强调色。</span>
+            </div>
+          </div>
+
+          <div id="panel-image" role="tabpanel" aria-labelledby="tab-image" hidden>
+            <div class="edge-art-grid" id="image-grid" role="radiogroup" aria-label="图像主题">
+              <button class="edge-art-card" type="button" role="radio" data-image="aurora" aria-checked="false" title="极光 · Aurora">
+                <span class="edge-art-thumb" data-art="aurora"></span>
+                <span class="edge-art-meta"><span class="edge-art-name">极光</span><span class="edge-art-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+              </button>
+              <button class="edge-art-card" type="button" role="radio" data-image="dune" aria-checked="false" title="沙丘 · Dune">
+                <span class="edge-art-thumb" data-art="dune"></span>
+                <span class="edge-art-meta"><span class="edge-art-name">沙丘</span><span class="edge-art-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+              </button>
+              <button class="edge-art-card" type="button" role="radio" data-image="tide" aria-checked="false" title="潮汐 · Tide">
+                <span class="edge-art-thumb" data-art="tide"></span>
+                <span class="edge-art-meta"><span class="edge-art-name">潮汐</span><span class="edge-art-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+              </button>
+              <button class="edge-art-card" type="button" role="radio" data-image="bloom" aria-checked="false" title="花期 · Bloom">
+                <span class="edge-art-thumb" data-art="bloom"></span>
+                <span class="edge-art-meta"><span class="edge-art-name">花期</span><span class="edge-art-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+              </button>
+              <button class="edge-art-card" type="button" role="radio" data-image="nocturne" aria-checked="false" title="夜航 · Nocturne">
+                <span class="edge-art-thumb" data-art="nocturne"></span>
+                <span class="edge-art-meta"><span class="edge-art-name">夜航</span><span class="edge-art-check"><svg aria-hidden="true"><use href="#i-check"/></svg></span></span>
+              </button>
+            </div>
+            <div class="demo-art-foot">
+              <p>
+                <svg aria-hidden="true"><use href="#i-info"/></svg>
+                图像主题使用抽象场景，以毛玻璃表面保证正文对比度。
+              </p>
+              <button class="edge-link" id="clear-image" type="button" hidden>移除图像主题</button>
+            </div>
+          </div>
+
+          <div class="edge-preview-card">
+            <div class="edge-preview-head">
+              <strong>实时预览</strong>
+              <span id="preview-state">跟随系统 · 鼠尾草</span>
+            </div>
+            <div class="edge-browser" aria-label="外观预览">
+              <div class="edge-browser-bar">
+                <span class="edge-browser-dots" aria-hidden="true"><span class="edge-browser-dot"></span><span class="edge-browser-dot"></span><span class="edge-browser-dot"></span></span>
+                <span class="edge-browser-address">edge://settings/appearance</span>
+                <span aria-hidden="true" style="color:var(--edge-faint);font-size:12px">···</span>
+              </div>
+              <div class="edge-browser-view">
+                <div class="edge-mini-nav" aria-hidden="true">
+                  <div class="edge-mini-item">个人资料</div>
+                  <div class="edge-mini-item">隐私</div>
+                  <div class="edge-mini-item is-active">外观</div>
+                  <div class="edge-mini-item">语言</div>
+                  <div class="edge-mini-item">系统</div>
+                </div>
+                <div class="edge-mini-main" aria-hidden="true">
+                  <div class="edge-mini-title">外观</div>
+                  <div class="edge-mini-sub">自定义浏览体验</div>
+                  <div class="edge-mini-card">
+                    <div class="edge-mini-lines">
+                      <span class="edge-mini-line w40"></span>
+                      <span class="edge-mini-line w64"></span>
+                    </div>
+                    <div class="edge-mini-seg"><span class="is-on"></span><span></span><span></span></div>
+                  </div>
+                  <div class="edge-mini-card">
+                    <div class="edge-mini-lines">
+                      <span class="edge-mini-line w64"></span>
+                      <span class="edge-mini-line w40"></span>
+                    </div>
+                    <span class="edge-mini-swatch" style="width:16px;height:16px"></span>
+                  </div>
+                  <div class="edge-mini-swatches">
+                    <span class="edge-mini-swatch"></span>
+                    <span class="edge-mini-swatch"></span>
+                    <span class="edge-mini-swatch"></span>
+                    <span class="edge-mini-swatch"></span>
+                    <span class="edge-mini-swatch"></span>
+                  </div>
+                  <div class="edge-mini-art demo-mini-art"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <details class="edge-dev">
+            <summary>
+              <svg aria-hidden="true"><use href="#i-code"/></svg>
+              把同一套外观部署到任意网页
+              <span class="edge-badge">1 行代码</span>
+            </summary>
+            <div class="edge-dev-body">
+              <p>将 <code>edge-theme.js</code> 放到站点，即可获得同样的系统 / 浅色 / 深色切换、5 个颜色主题、5 个图像主题和悬浮设置面板。</p>
+              <div class="edge-code">
+                <code id="deploy-code">&lt;script src="/edge-theme.js" data-edge-panel="true"&gt;&lt;/script&gt;</code>
+                <button class="edge-icon-btn demo-code-copy" type="button" id="copy-code" aria-label="复制部署代码">
+                  <svg aria-hidden="true"><use href="#i-copy"/></svg>
+                </button>
+              </div>
+              <p style="margin-top:9px">面板会把偏好写入 <code>localStorage</code>，并暴露 <code>window.EdgeTheme</code> 供页面读取当前主题。</p>
+            </div>
+          </details>
+
+          <div class="demo-footer">
+            <span>设计语言参考 Microsoft Edge 设置页 · <strong>非官方复刻</strong></span>
+            <span class="demo-footer-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>5 个颜色主题 · 5 个图像主题 · 系统 / 浅色 / 深色</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var api = window.EdgeTheme;
+  if (!api) return;
+
+  var colorDescriptions = {
+    azure: "清透的浏览器蓝，最接近经典链接与选中态的观感。",
+    sage: "低饱和的绿色，接近 Edge 默认的柔和强调色。",
+    amber: "温暖的砂金色，适合偏纸张质感的工作界面。",
+    rose: "克制的玫瑰色，为中性界面增加一点温度。",
+    iris: "略带灰度的鸢尾紫，安静但有辨识度。"
+  };
+  var colorNames = { azure: "湖蓝", sage: "鼠尾草", amber: "暖砂", rose: "玫瑰", iris: "鸢尾" };
+  var imageNames = { aurora: "极光", dune: "沙丘", tide: "潮汐", bloom: "花期", nocturne: "夜航" };
+  var modeNames = { system: "跟随系统", light: "浅色", dark: "深色" };
+
+  function $(selector, scope) {
+    return (scope || document).querySelector(selector);
+  }
+  function $all(selector, scope) {
+    return Array.prototype.slice.call((scope || document).querySelectorAll(selector));
+  }
+
+  function setPressed(selector, value, attribute) {
+    $all(selector).forEach(function (button) {
+      button.setAttribute("aria-checked", button.getAttribute(attribute) === value ? "true" : "false");
+    });
+  }
+
+  function setTab(tab, moveFocus) {
+    $all("[data-tab]").forEach(function (button) {
+      var selected = button.getAttribute("data-tab") === tab;
+      button.setAttribute("aria-selected", selected ? "true" : "false");
+      button.tabIndex = selected ? 0 : -1;
+      if (selected && moveFocus) button.focus();
+    });
+    $("#panel-color").hidden = tab !== "color";
+    $("#panel-image").hidden = tab !== "image";
+  }
+
+  function sync() {
+    var state = api.get();
+    setPressed("[data-appearance]", state.appearance, "data-appearance");
+    setPressed("[data-color]", state.colorTheme, "data-color");
+    setPressed("[data-image]", state.imageTheme, "data-image");
+
+    var mode = state.appearance === "system"
+      ? modeNames.system + " · " + (state.mode === "dark" ? "深色" : "浅色")
+      : modeNames[state.appearance];
+    var preview = mode + " · " + colorNames[state.colorTheme];
+    if (state.imageTheme !== "none") preview += " · " + imageNames[state.imageTheme];
+    $("#preview-state").textContent = preview;
+    $("#color-name").textContent = colorNames[state.colorTheme];
+    $("#color-desc").textContent = colorDescriptions[state.colorTheme];
+    $("#clear-image").hidden = state.imageTheme === "none";
+  }
+
+  $all("[data-appearance]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      api.setAppearance(button.getAttribute("data-appearance"));
+    });
+  });
+  $all("[data-color]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      api.setColorTheme(button.getAttribute("data-color"));
+    });
+  });
+  $all("[data-image]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      api.setImageTheme(button.getAttribute("data-image"));
+    });
+  });
+  $all("[data-tab]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      setTab(button.getAttribute("data-tab"), false);
+    });
+    button.addEventListener("keydown", function (event) {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+      event.preventDefault();
+      var tabs = $all("[data-tab]");
+      var index = tabs.indexOf(button);
+      var next = event.key === "ArrowRight" ? (index + 1) % tabs.length : (index - 1 + tabs.length) % tabs.length;
+      setTab(tabs[next].getAttribute("data-tab"), true);
+    });
+  });
+
+  $("#reset-theme").addEventListener("click", function () {
+    api.reset();
+    showToast("已恢复默认外观");
+  });
+  $("#clear-image").addEventListener("click", function () {
+    api.setImageTheme("none");
+    showToast("已移除图像主题");
+  });
+  $("#open-panel").addEventListener("click", function () {
+    api.open();
+  });
+
+  window.addEventListener("edge-theme:change", sync);
+  window.addEventListener("edge-theme:ready", sync);
+  sync();
+
+  // Search filters the visible navigation labels, like a settings search.
+  var search = $("#settings-search");
+  var navItems = $all("[data-demo-nav]");
+  search.addEventListener("input", function () {
+    var query = search.value.trim().toLowerCase();
+    navItems.forEach(function (item) {
+      item.hidden = query ? item.textContent.toLowerCase().indexOf(query) === -1 : false;
+    });
+  });
+  document.addEventListener("keydown", function (event) {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+      event.preventDefault();
+      search.focus();
+      search.select();
+    }
+  });
+
+  $all("[data-demo-nav]").forEach(function (item) {
+    item.addEventListener("click", function () {
+      showToast("本 Demo 仅展示「外观」页；其他入口为视觉示例。");
+    });
+  });
+  $all("[data-demo-quick]").forEach(function (item) {
+    item.addEventListener("click", function () {
+      showToast("该入口在完整设置中可用；本 Demo 聚焦外观设计。");
+    });
+  });
+  $all("[data-demo-thumb]").forEach(function (item) {
+    item.addEventListener("click", function () {
+      showToast(item.getAttribute("data-demo-thumb") === "up" ? "感谢反馈，已记录（Demo）" : "已记录。颜色与图像主题都可以随时调整。");
+    });
+  });
+  $all("[data-demo-store], [data-demo-feedback]").forEach(function (item) {
+    item.addEventListener("click", function (event) {
+      event.preventDefault();
+      showToast("这是非官方设计复刻，不连接 Microsoft 服务。");
+    });
+  });
+
+  $("#copy-code").addEventListener("click", function () {
+    var text = $("#deploy-code").textContent;
+    function done() { showToast("部署代码已复制"); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(fallbackCopy);
+    } else {
+      fallbackCopy();
+    }
+    function fallbackCopy() {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.style.position = "fixed";
+      area.style.opacity = "0";
+      document.body.appendChild(area);
+      area.select();
+      try { document.execCommand("copy"); done(); } catch (error) { showToast("复制失败，请手动选择代码"); }
+      area.remove();
+    }
+  });
+
+  var toastTimer;
+  function showToast(message) {
+    var toast = $(".demo-toast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.className = "demo-toast edge-toast";
+      toast.setAttribute("role", "status");
+      toast.innerHTML = '<svg aria-hidden="true"><use href="#i-check"/></svg><span></span>';
+      document.body.appendChild(toast);
+    }
+    toast.querySelector("span").textContent = message;
+    toast.classList.add("is-visible");
+    window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(function () {
+      toast.classList.remove("is-visible");
+    }, 2600);
+  }
+
+  var params = new URLSearchParams(window.location.search);
+  if (params.get("tab") === "image") setTab("image", false);
+})();
+</script>
+</body>
+</html>

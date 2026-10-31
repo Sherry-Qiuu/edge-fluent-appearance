@@ -1,0 +1,188 @@
+/* ==========================================================================
+   Foundation · page canvas, art backdrop, type, focus, scrollbars
+   ========================================================================== */
+
+.edge-app,
+.edge-app *,
+.edge-app *::before,
+.edge-app *::after,
+.edge-panel,
+.edge-panel *,
+.edge-panel *::before,
+.edge-panel *::after,
+.edge-launcher,
+.edge-launcher * {
+  box-sizing: border-box;
+}
+
+.edge-app {
+  min-height: 100vh;
+  color: var(--edge-text);
+  font-family: var(--edge-font);
+  font-size: var(--edge-text-base);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.edge-app button,
+.edge-app input,
+.edge-app select,
+.edge-app textarea,
+.edge-panel button,
+.edge-panel input,
+.edge-panel select,
+.edge-panel textarea {
+  font: inherit;
+  color: inherit;
+}
+
+.edge-app button,
+.edge-panel button,
+.edge-launcher {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.edge-app ::selection,
+.edge-skinned ::selection {
+  background: var(--edge-accent-soft-2);
+  color: var(--edge-text);
+}
+
+.edge-app :focus-visible,
+.edge-panel :focus-visible,
+.edge-launcher:focus-visible {
+  outline: 2px solid var(--edge-accent);
+  outline-offset: 2px;
+}
+
+/* Optional canvas mode: one script or one attribute paints the host page. */
+html.edge-skinned,
+html[data-edge-appearance]:not([data-edge-skin="none"]) {
+  background-color: var(--edge-bg);
+}
+
+html.edge-skinned body,
+html[data-edge-appearance]:not([data-edge-skin="none"]) body {
+  background-color: var(--edge-bg);
+  background-image: var(--edge-art-tint), var(--edge-art-scrim), var(--edge-art);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--edge-text);
+  font-family: var(--edge-font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Optional full-page canvas helper for apps that opt into the design. */
+.edge-canvas {
+  min-height: 100vh;
+  background-color: var(--edge-bg);
+  background-image: var(--edge-art-tint), var(--edge-art-scrim), var(--edge-art);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* The app shell is transparent so the art layer can show through. */
+.edge-shell {
+  min-height: 100vh;
+  display: flex;
+  color: var(--edge-text);
+  background: transparent;
+}
+
+.edge-shell a {
+  color: var(--edge-accent-text);
+  text-decoration: none;
+}
+
+.edge-shell a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Scrollbars -------------------------------------------------------------- */
+.edge-app,
+.edge-panel,
+.edge-shell {
+  scrollbar-width: thin;
+  scrollbar-color: light-dark(rgba(70, 70, 74, 0.28), rgba(220, 220, 214, 0.28))
+    transparent;
+}
+
+.edge-app ::-webkit-scrollbar,
+.edge-panel ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.edge-app ::-webkit-scrollbar-thumb,
+.edge-panel ::-webkit-scrollbar-thumb {
+  background: light-dark(rgba(70, 70, 74, 0.26), rgba(220, 220, 214, 0.24));
+  border: 3px solid transparent;
+  background-clip: content-box;
+  border-radius: var(--edge-r-pill);
+}
+
+.edge-app ::-webkit-scrollbar-thumb:hover,
+.edge-panel ::-webkit-scrollbar-thumb:hover {
+  background: light-dark(rgba(70, 70, 74, 0.4), rgba(220, 220, 214, 0.36));
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+/* Generic type ------------------------------------------------------------ */
+.edge-app h1,
+.edge-app h2,
+.edge-app h3,
+.edge-app h4,
+.edge-panel h2,
+.edge-panel h3 {
+  margin: 0;
+  font-family: var(--edge-font-display);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+}
+
+.edge-app p,
+.edge-panel p {
+  margin: 0;
+}
+
+.edge-app svg,
+.edge-panel svg,
+.edge-launcher svg {
+  display: block;
+  flex: none;
+}
+
+/* Screen-reader-only helper. */
+.edge-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edge-app *,
+  .edge-app *::before,
+  .edge-app *::after,
+  .edge-panel,
+  .edge-panel *,
+  .edge-launcher {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

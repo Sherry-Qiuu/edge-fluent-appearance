@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Warm desert dunes at dusk">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7ead8"/>
+      <stop offset=".52" stop-color="#edcfb0"/>
+      <stop offset="1" stop-color="#d9a47c"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#fff4dc" stop-opacity=".98"/>
+      <stop offset=".42" stop-color="#ffd9a0" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#ffbd73" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="duneBack" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e5b98f"/>
+      <stop offset="1" stop-color="#c78e63"/>
+    </linearGradient>
+    <linearGradient id="duneMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d19a6c"/>
+      <stop offset="1" stop-color="#a96b44"/>
+    </linearGradient>
+    <linearGradient id="duneFront" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a96a43"/>
+      <stop offset=".55" stop-color="#844b31"/>
+      <stop offset="1" stop-color="#5f3425"/>
+    </linearGradient>
+    <filter id="blur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".05"/></feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <circle cx="1140" cy="270" r="250" fill="url(#sun)" filter="url(#blur)"/>
+  <circle cx="1140" cy="270" r="92" fill="#fff0d2" opacity=".9"/>
+  <path d="M0 640C250 540 430 610 650 560S1040 470 1240 540s220 40 360 10v450H0Z" fill="url(#duneBack)"/>
+  <path d="M0 730C220 610 420 700 650 650s380-80 570 10 270 70 380 30v310H0Z" fill="url(#duneMid)"/>
+  <path d="M0 860C220 740 410 820 610 790s390-40 560 60 290 70 430 20v130H0Z" fill="url(#duneFront)"/>
+  <g fill="none" stroke-linecap="round" opacity=".38">
+    <path d="M0 760C220 640 420 720 650 670s380-80 570 10" stroke="#ffd9ae" stroke-width="2"/>
+    <path d="M0 888C220 768 410 848 610 818s390-40 560 60" stroke="#ffc999" stroke-width="1.6"/>
+  </g>
+  <g fill="#6b3d2a" opacity=".2">
+    <circle cx="1260" cy="700" r="4"/>
+    <circle cx="1330" cy="730" r="2.6"/>
+    <circle cx="1180" cy="760" r="3"/>
+    <circle cx="1420" cy="680" r="2"/>
+  </g>
+  <rect width="1600" height="1000" filter="url(#grain)" opacity=".7"/>
+</svg>

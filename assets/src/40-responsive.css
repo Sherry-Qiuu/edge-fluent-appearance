@@ -1,0 +1,275 @@
+/* ==========================================================================
+   Responsive · the settings shell folds before it gets cramped
+   ========================================================================== */
+
+@media (max-width: 1120px) {
+  .edge-sidebar {
+    flex-basis: 238px;
+    width: 238px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .edge-main {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .edge-page-head,
+  .edge-page-body {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .edge-art-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+
+@media (max-width: 920px) {
+  .edge-sidebar {
+    display: none;
+  }
+
+  .edge-main {
+    padding: 14px 16px 44px;
+  }
+
+  .edge-mobile-brand {
+    display: inline-flex;
+  }
+
+  .edge-topbar {
+    flex-wrap: wrap;
+  }
+
+  .edge-search {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .edge-topbar-actions {
+    margin-left: auto;
+  }
+
+  .edge-page-head {
+    flex-direction: column;
+    gap: 13px;
+    padding-top: 20px;
+  }
+
+  .edge-page-actions {
+    align-self: flex-start;
+  }
+
+  .edge-row {
+    flex-direction: column;
+    gap: 14px;
+    align-items: stretch;
+  }
+
+  .edge-row-control,
+  .edge-segmented {
+    align-self: flex-start;
+  }
+
+  .edge-row-control .edge-segmented {
+    width: auto;
+  }
+
+  .edge-art-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .edge-app {
+    font-size: 13px;
+  }
+
+  .edge-main {
+    padding: 12px 10px 36px;
+  }
+
+  .edge-page {
+    border-radius: var(--edge-r-lg);
+  }
+
+  .edge-page-head,
+  .edge-page-body {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .edge-page-body {
+    padding-bottom: 20px;
+  }
+
+  .edge-page-title h1 {
+    font-size: 18px;
+  }
+
+  .edge-page-actions {
+    flex-wrap: wrap;
+  }
+
+  .edge-feedback {
+    display: none;
+  }
+
+  .edge-card {
+    padding: 14px;
+  }
+
+  .edge-row-control,
+  .edge-row-control .edge-segmented {
+    width: 100%;
+  }
+
+  .edge-row-control .edge-segmented {
+    display: flex;
+  }
+
+  .edge-row-control .edge-seg {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0 8px;
+  }
+
+  .edge-quick {
+    flex-wrap: nowrap;
+    padding-bottom: 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .edge-quick::-webkit-scrollbar {
+    display: none;
+  }
+
+  .edge-chip {
+    flex: none;
+  }
+
+  .edge-toolbar {
+    align-items: flex-start;
+  }
+
+  .edge-tabs {
+    flex: 1 1 100%;
+  }
+
+  .edge-tab {
+    flex: 1 1 0;
+    padding: 0 9px;
+  }
+
+  .edge-swatches {
+    gap: 14px;
+  }
+
+  .edge-swatch {
+    width: 38px;
+    height: 38px;
+  }
+
+  .edge-art-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .edge-browser-view {
+    min-height: 220px;
+    padding: 10px;
+  }
+
+  .edge-mini-nav {
+    flex-basis: 104px;
+  }
+
+  .edge-mini-main {
+    padding: 10px;
+  }
+
+  .edge-preview-card {
+    padding: 9px;
+  }
+
+  .edge-dev summary {
+    padding: 11px 13px;
+  }
+
+  .edge-dev-body {
+    padding: 0 13px 13px;
+  }
+
+  .edge-toast {
+    bottom: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .edge-mobile-brand {
+    font-size: 16px;
+  }
+
+  .edge-topbar-actions .edge-btn span {
+    display: none;
+  }
+
+  .edge-topbar-actions .edge-btn {
+    width: 32px;
+    padding: 0;
+  }
+
+  .edge-page-head,
+  .edge-page-body {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .edge-row-copy {
+    gap: 10px;
+  }
+
+  .edge-art-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .edge-art-name {
+    font-size: 10.5px;
+  }
+
+  .edge-swatch-option {
+    font-size: 10px;
+  }
+
+  .edge-swatch {
+    width: 36px;
+    height: 36px;
+  }
+
+  .edge-mini-nav {
+    display: none;
+  }
+
+  .edge-browser-view {
+    min-height: 200px;
+  }
+
+  .edge-code {
+    font-size: 9.5px;
+  }
+}
+
+@media (max-height: 620px) and (min-width: 561px) {
+  .edge-panel {
+    max-height: calc(100vh - 88px);
+  }
+
+  .edge-panel-section {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}

@@ -1,0 +1,278 @@
+/* ==========================================================================
+   Edge Fluent Appearance · tokens
+   An original, Edge-inspired Fluent design system. Not affiliated with Microsoft.
+   Baseline: evergreen Chromium / Firefox / Safari with light-dark() support.
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  /* Type ------------------------------------------------------------------ */
+  --edge-font: "Segoe UI Variable Text", "Segoe UI", -apple-system,
+    BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI",
+    "Microsoft YaHei", sans-serif;
+  --edge-font-display: "Segoe UI Variable Display", "Segoe UI", -apple-system,
+    BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI",
+    "Microsoft YaHei", sans-serif;
+  --edge-mono: "Cascadia Code", "Cascadia Mono", "SFMono-Regular", Consolas,
+    "Liberation Mono", monospace;
+  --edge-text-xs: 11px;
+  --edge-text-sm: 12px;
+  --edge-text-md: 13px;
+  --edge-text-base: 14px;
+  --edge-text-lg: 16px;
+  --edge-text-xl: 20px;
+  --edge-text-2xl: 26px;
+
+  /* Space ---------------------------------------------------------------- */
+  --edge-s-1: 4px;
+  --edge-s-2: 8px;
+  --edge-s-3: 12px;
+  --edge-s-4: 16px;
+  --edge-s-5: 20px;
+  --edge-s-6: 24px;
+  --edge-s-7: 32px;
+  --edge-s-8: 40px;
+
+  /* Shape ---------------------------------------------------------------- */
+  --edge-r-xs: 4px;
+  --edge-r-sm: 6px;
+  --edge-r-md: 8px;
+  --edge-r-lg: 10px;
+  --edge-r-xl: 12px;
+  --edge-r-2xl: 16px;
+  --edge-r-pill: 999px;
+
+  /* Motion --------------------------------------------------------------- */
+  --edge-ease: cubic-bezier(0.2, 0, 0, 1);
+  --edge-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --edge-dur-1: 120ms;
+  --edge-dur-2: 180ms;
+  --edge-dur-3: 280ms;
+
+  /* Surfaces (light / dark via light-dark) -------------------------------- */
+  --edge-bg: light-dark(#f3f3f1, #1b1b1a);
+  --edge-bg-2: light-dark(#f8f8f6, #20201f);
+  --edge-surface-solid: light-dark(#ffffff, #272725);
+  --edge-surface: var(--edge-surface-solid);
+  --edge-surface-2: light-dark(#f7f7f4, #2d2d2a);
+  --edge-surface-3: light-dark(#eeeeea, #343431);
+  --edge-surface-glass: light-dark(
+    color-mix(in srgb, #ffffff 82%, transparent),
+    color-mix(in srgb, #272725 82%, transparent)
+  );
+  --edge-panel-bg: light-dark(
+    color-mix(in srgb, #fbfbf9 92%, transparent),
+    color-mix(in srgb, #232322 92%, transparent)
+  );
+
+  --edge-text: light-dark(#1d1d1f, #f3f3ef);
+  --edge-text-2: light-dark(#3f3f44, #d7d7d2);
+  --edge-muted: light-dark(#5f5f66, #b0b0aa);
+  --edge-faint: light-dark(#6e6e74, #92928c);
+  --edge-border: light-dark(#e4e4df, #3a3a37);
+  --edge-border-strong: light-dark(#d0d0c8, #4c4c47);
+  --edge-hover: light-dark(rgba(28, 28, 30, 0.05), rgba(255, 255, 255, 0.06));
+  --edge-active: light-dark(rgba(28, 28, 30, 0.09), rgba(255, 255, 255, 0.1));
+  --edge-backdrop: light-dark(rgba(20, 20, 24, 0.26), rgba(0, 0, 0, 0.48));
+
+  --edge-shadow-1: 0 1px 2px light-dark(rgba(24, 24, 28, 0.04), rgba(0, 0, 0, 0.22)),
+    0 2px 8px light-dark(rgba(24, 24, 28, 0.035), rgba(0, 0, 0, 0.16));
+  --edge-shadow-2: 0 2px 6px light-dark(rgba(24, 24, 28, 0.06), rgba(0, 0, 0, 0.25)),
+    0 12px 32px light-dark(rgba(24, 24, 28, 0.12), rgba(0, 0, 0, 0.34));
+  --edge-shadow-3: 0 4px 10px light-dark(rgba(24, 24, 28, 0.08), rgba(0, 0, 0, 0.32)),
+    0 24px 64px light-dark(rgba(24, 24, 28, 0.2), rgba(0, 0, 0, 0.5));
+
+  /* Accent: sage (default) ------------------------------------------------ */
+  --edge-accent-l: #4f7a5b;
+  --edge-accent-d: #a8c9a6;
+  --edge-accent-strong-l: #3c5f47;
+  --edge-accent-strong-d: #c7e0c3;
+  --edge-accent-ink-l: #ffffff;
+  --edge-accent-ink-d: #142316;
+  --edge-accent-text-l: #3f6549;
+  --edge-accent-text-d: #b9d8b6;
+  --edge-swatch-1: #dfe9d9;
+  --edge-swatch-2: #50765a;
+
+  --edge-accent: light-dark(var(--edge-accent-l), var(--edge-accent-d));
+  --edge-accent-strong: light-dark(
+    var(--edge-accent-strong-l),
+    var(--edge-accent-strong-d)
+  );
+  --edge-accent-ink: light-dark(var(--edge-accent-ink-l), var(--edge-accent-ink-d));
+  --edge-accent-text: light-dark(
+    var(--edge-accent-text-l),
+    var(--edge-accent-text-d)
+  );
+  --edge-accent-soft: color-mix(
+    in srgb,
+    var(--edge-accent) 14%,
+    var(--edge-surface-solid)
+  );
+  --edge-accent-soft-2: color-mix(
+    in srgb,
+    var(--edge-accent) 24%,
+    var(--edge-surface-solid)
+  );
+  --edge-accent-line: color-mix(
+    in srgb,
+    var(--edge-accent) 42%,
+    var(--edge-border)
+  );
+  --edge-focus-ring: 0 0 0 2px var(--edge-bg), 0 0 0 4px var(--edge-accent);
+
+  /* Art ------------------------------------------------------------------ */
+  --edge-art-none: none;
+  --edge-art-aurora: url("themes/aurora.svg");
+  --edge-art-dune: url("themes/dune.svg");
+  --edge-art-tide: url("themes/tide.svg");
+  --edge-art-bloom: url("themes/bloom.svg");
+  --edge-art-nocturne: url("themes/nocturne.svg");
+  --edge-art: none;
+  --edge-art-scrim: none;
+  --edge-art-tint: none;
+  --edge-art-veil: none;
+}
+
+/* Static authoring: works with no JavaScript. */
+:root[data-edge-appearance="light"] {
+  color-scheme: light;
+}
+:root[data-edge-appearance="dark"] {
+  color-scheme: dark;
+}
+:root[data-edge-appearance="system"] {
+  color-scheme: light dark;
+}
+
+/* Runtime-resolved mode wins over the authoring attribute. */
+:root[data-edge-mode="light"] {
+  color-scheme: light;
+}
+:root[data-edge-mode="dark"] {
+  color-scheme: dark;
+}
+
+/* Palette: azure ---------------------------------------------------------- */
+:root[data-edge-color-theme="azure"] {
+  --edge-accent-l: #2f6fed;
+  --edge-accent-d: #8ab8ff;
+  --edge-accent-strong-l: #1f57c3;
+  --edge-accent-strong-d: #b6d4ff;
+  --edge-accent-ink-l: #ffffff;
+  --edge-accent-ink-d: #0c1b33;
+  --edge-accent-text-l: #1f5bc4;
+  --edge-accent-text-d: #a9cbff;
+  --edge-swatch-1: #cfe0ff;
+  --edge-swatch-2: #2f6fed;
+}
+
+/* Palette: sage ----------------------------------------------------------- */
+:root[data-edge-color-theme="sage"] {
+  --edge-accent-l: #4f7a5b;
+  --edge-accent-d: #a8c9a6;
+  --edge-accent-strong-l: #3c5f47;
+  --edge-accent-strong-d: #c7e0c3;
+  --edge-accent-ink-l: #ffffff;
+  --edge-accent-ink-d: #142316;
+  --edge-accent-text-l: #3f6549;
+  --edge-accent-text-d: #b9d8b6;
+  --edge-swatch-1: #dfe9d9;
+  --edge-swatch-2: #50765a;
+}
+
+/* Palette: amber ---------------------------------------------------------- */
+:root[data-edge-color-theme="amber"] {
+  --edge-accent-l: #a96418;
+  --edge-accent-d: #e9b36a;
+  --edge-accent-strong-l: #82490e;
+  --edge-accent-strong-d: #f0c68c;
+  --edge-accent-ink-l: #ffffff;
+  --edge-accent-ink-d: #2a1704;
+  --edge-accent-text-l: #7f4a0f;
+  --edge-accent-text-d: #f0c68c;
+  --edge-swatch-1: #f3dfc3;
+  --edge-swatch-2: #b06b1d;
+}
+
+/* Palette: rose ----------------------------------------------------------- */
+:root[data-edge-color-theme="rose"] {
+  --edge-accent-l: #b04d6c;
+  --edge-accent-d: #e8a4b8;
+  --edge-accent-strong-l: #8b3854;
+  --edge-accent-strong-d: #f0b9c7;
+  --edge-accent-ink-l: #ffffff;
+  --edge-accent-ink-d: #2b1118;
+  --edge-accent-text-l: #8b3854;
+  --edge-accent-text-d: #f0b9c7;
+  --edge-swatch-1: #f3d7df;
+  --edge-swatch-2: #b04d6c;
+}
+
+/* Palette: iris ----------------------------------------------------------- */
+:root[data-edge-color-theme="iris"] {
+  --edge-accent-l: #6a57c8;
+  --edge-accent-d: #b9a8ff;
+  --edge-accent-strong-l: #4e3da6;
+  --edge-accent-strong-d: #ccbfff;
+  --edge-accent-ink-l: #ffffff;
+  --edge-accent-ink-d: #1b1238;
+  --edge-accent-text-l: #4e3da6;
+  --edge-accent-text-d: #ccbfff;
+  --edge-swatch-1: #e2dcff;
+  --edge-swatch-2: #6a57c8;
+}
+
+/* Image themes ------------------------------------------------------------ */
+:root[data-edge-image-theme="aurora"] {
+  --edge-art: var(--edge-art-aurora);
+}
+:root[data-edge-image-theme="dune"] {
+  --edge-art: var(--edge-art-dune);
+}
+:root[data-edge-image-theme="tide"] {
+  --edge-art: var(--edge-art-tide);
+}
+:root[data-edge-image-theme="bloom"] {
+  --edge-art: var(--edge-art-bloom);
+}
+:root[data-edge-image-theme="nocturne"] {
+  --edge-art: var(--edge-art-nocturne);
+}
+
+/* When art is active, lift surfaces into glass so the backdrop can read. */
+:root[data-edge-image-theme]:not([data-edge-image-theme="none"]) {
+  --edge-art-scrim: linear-gradient(
+    180deg,
+    light-dark(rgba(243, 243, 241, 0.74), rgba(27, 27, 26, 0.6)) 0%,
+    light-dark(rgba(243, 243, 241, 0.9), rgba(27, 27, 26, 0.82)) 100%
+  );
+  --edge-art-tint: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--edge-accent) 16%, transparent) 0%,
+    transparent 56%
+  );
+  --edge-art-veil: linear-gradient(
+    180deg,
+    transparent 0%,
+    light-dark(rgba(243, 243, 241, 0.28), rgba(27, 27, 26, 0.3)) 100%
+  );
+  --edge-surface: color-mix(
+    in srgb,
+    var(--edge-surface-solid) 82%,
+    transparent
+  );
+  --edge-surface-2: light-dark(
+    color-mix(in srgb, #f7f7f4 80%, transparent),
+    color-mix(in srgb, #2d2d2a 80%, transparent)
+  );
+  --edge-surface-3: light-dark(
+    color-mix(in srgb, #eeeeea 76%, transparent),
+    color-mix(in srgb, #343431 76%, transparent)
+  );
+  --edge-panel-bg: light-dark(
+    color-mix(in srgb, #fbfbf9 86%, transparent),
+    color-mix(in srgb, #232322 88%, transparent)
+  );
+}

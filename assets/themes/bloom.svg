@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Soft rose and lilac petals in bloom">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fdf1f1"/>
+      <stop offset=".5" stop-color="#f8e2e8"/>
+      <stop offset="1" stop-color="#ecd8ef"/>
+    </linearGradient>
+    <linearGradient id="petalA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7b3c4"/>
+      <stop offset="1" stop-color="#d97190"/>
+    </linearGradient>
+    <linearGradient id="petalB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e4c8ff"/>
+      <stop offset="1" stop-color="#a98adf"/>
+    </linearGradient>
+    <linearGradient id="petalC" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd6c2"/>
+      <stop offset="1" stop-color="#f09b83"/>
+    </linearGradient>
+    <radialGradient id="light" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#fffdfb" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#fffdfb" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+    <filter id="blurBig" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="60"/>
+    </filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".88" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".045"/></feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <circle cx="1180" cy="270" r="420" fill="url(#light)" filter="url(#blurBig)"/>
+  <g filter="url(#blur)">
+    <ellipse cx="350" cy="360" rx="330" ry="190" fill="url(#petalA)" opacity=".5" transform="rotate(-24 350 360)"/>
+    <ellipse cx="1250" cy="650" rx="390" ry="210" fill="url(#petalB)" opacity=".48" transform="rotate(18 1250 650)"/>
+    <ellipse cx="760" cy="820" rx="330" ry="170" fill="url(#petalC)" opacity=".44" transform="rotate(-12 760 820)"/>
+    <ellipse cx="1040" cy="350" rx="260" ry="150" fill="url(#petalB)" opacity=".42" transform="rotate(32 1040 350)"/>
+    <ellipse cx="180" cy="760" rx="270" ry="160" fill="url(#petalC)" opacity=".38" transform="rotate(16 180 760)"/>
+  </g>
+  <g fill="none" stroke="#ffffff" opacity=".32">
+    <path d="M420 520C620 380 820 360 1010 450S1300 640 1420 620" stroke-width="1.6"/>
+    <path d="M250 690C450 600 610 640 760 720" stroke-width="1.2"/>
+  </g>
+  <g fill="#b45a77" opacity=".22">
+    <circle cx="590" cy="280" r="3"/>
+    <circle cx="640" cy="310" r="1.8"/>
+    <circle cx="1360" cy="430" r="2.6"/>
+    <circle cx="1320" cy="470" r="1.6"/>
+    <circle cx="870" cy="660" r="2.2"/>
+  </g>
+  <rect width="1600" height="1000" filter="url(#grain)" opacity=".65"/>
+</svg>
