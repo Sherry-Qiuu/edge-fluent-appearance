@@ -27,9 +27,11 @@ Most “Edge-style” recreations copy the screenshot and stop at a static mocku
 | --- | --- |
 | ![Light appearance page](demo/preview-light.png) | ![Dark Aurora appearance page](demo/preview-dark.png) |
 
-| Floating panel | Any page, one script |
+| Floating panel — color | Floating panel — image |
 | --- | --- |
-| ![Appearance panel](demo/preview-panel.png) | ![Fieldnote any-page skin](demo/preview-any-page.png) |
+| ![Appearance panel](demo/preview-panel.png) | ![Image theme panel](demo/preview-panel-image.png) |
+
+![Fieldnote any-page skin](demo/preview-any-page.png)
 
 ![Mobile layout](demo/preview-mobile.png)
 

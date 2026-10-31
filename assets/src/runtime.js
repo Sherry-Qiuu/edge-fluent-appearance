@@ -10,7 +10,7 @@
     return;
   }
 
-  var VERSION = "1.0.0";
+  var VERSION = "1.0.1";
   var STORAGE_DEFAULT = "edge-fluent-appearance:v1";
   var CSS = "__EDGE_CSS_PLACEHOLDER__";
 
@@ -534,38 +534,45 @@
 
   function onPanelClick(event) {
     var target = event.target;
-    if (!(target instanceof Element)) {
+    if (!(target instanceof Element) || !panelEl.contains(target)) {
       return;
     }
-    var appearance = target.closest("[data-edge-appearance]");
-    if (appearance) {
-      setState({ appearance: appearance.getAttribute("data-edge-appearance") });
-      return;
+
+    // Never let `.closest()` walk past the panel to the <html> state attributes.
+    function match(selector) {
+      var node = target.closest(selector);
+      return node && panelEl.contains(node) ? node : null;
     }
-    var color = target.closest("[data-edge-color]");
-    if (color) {
-      setState({ colorTheme: color.getAttribute("data-edge-color") });
-      return;
-    }
-    var art = target.closest("[data-edge-art]");
-    if (art) {
-      setState({ imageTheme: art.getAttribute("data-edge-art") });
-      return;
-    }
-    var tab = target.closest("[data-edge-tab]");
+
+    var tab = match("[data-edge-tab]");
     if (tab) {
       setTab(tab.getAttribute("data-edge-tab"));
       return;
     }
-    if (target.closest("[data-edge-clear-art]")) {
+    var color = match("[data-edge-color]");
+    if (color) {
+      setState({ colorTheme: color.getAttribute("data-edge-color") });
+      return;
+    }
+    var art = match("[data-edge-art]");
+    if (art) {
+      setState({ imageTheme: art.getAttribute("data-edge-art") });
+      return;
+    }
+    var appearance = match("[data-edge-appearance]");
+    if (appearance) {
+      setState({ appearance: appearance.getAttribute("data-edge-appearance") });
+      return;
+    }
+    if (match("[data-edge-clear-art]")) {
       setState({ imageTheme: "none" });
       return;
     }
-    if (target.closest("[data-edge-reset]")) {
+    if (match("[data-edge-reset]")) {
       reset();
       return;
     }
-    if (target.closest("[data-edge-close]")) {
+    if (match("[data-edge-close]")) {
       close(true);
     }
   }
@@ -577,7 +584,15 @@
       return;
     }
 
-    var tab = event.target.closest ? event.target.closest("[data-edge-tab]") : null;
+    function match(selector) {
+      if (!event.target.closest) {
+        return null;
+      }
+      var node = event.target.closest(selector);
+      return node && panelEl.contains(node) ? node : null;
+    }
+
+    var tab = match("[data-edge-tab]");
     if (tab && (event.key === "ArrowRight" || event.key === "ArrowLeft")) {
       event.preventDefault();
       var tabs = panelRefs.tabs;
@@ -591,9 +606,7 @@
       return;
     }
 
-    var selected = event.target.closest
-      ? event.target.closest("[data-edge-appearance]")
-      : null;
+    var selected = match("[data-edge-appearance]");
     if (selected && (event.key === "ArrowRight" || event.key === "ArrowLeft")) {
       event.preventDefault();
       var modes = panelRefs.appearance;
@@ -607,9 +620,7 @@
       return;
     }
 
-    var colorOption = event.target.closest
-      ? event.target.closest("[data-edge-color]")
-      : null;
+    var colorOption = match("[data-edge-color]");
     if (colorOption && (event.key === "ArrowRight" || event.key === "ArrowLeft")) {
       event.preventDefault();
       var colors = panelRefs.color;
@@ -623,9 +634,7 @@
       return;
     }
 
-    var artOption = event.target.closest
-      ? event.target.closest("[data-edge-art]")
-      : null;
+    var artOption = match("[data-edge-art]");
     if (artOption && (event.key === "ArrowRight" || event.key === "ArrowLeft")) {
       event.preventDefault();
       var arts = panelRefs.art;
